@@ -1,1 +1,1 @@
-export const API = 'http://172.20.10.3:4000/';
+export const API = 'https://ezquizbe.onrender.com/';

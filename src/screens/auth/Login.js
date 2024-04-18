@@ -36,8 +36,8 @@ import { useLoginUserMutation } from 'src/services/authApi';
 //Web: 782625948070-5a1sertfems0ia4cedglharqqo44kqb4.apps.googleusercontent.com
 //IOS; 782625948070-dnqkej8k4movbj0j37lgjuuv435iucgb.apps.googleusercontent.com
 //Android:
-const InitLogin = { userName: '', password: '' };
-const InitErrorExist = { userName: false, password: false };
+const InitLogin = { mail: '', password: '' };
+const InitErrorExist = { mail: false, password: false };
 
 export default function Login({ navigation }) {
     const [formData, setFormData] = useState(InitLogin);
@@ -50,7 +50,7 @@ export default function Login({ navigation }) {
         useLoginUserMutation();
 
     useEffect(() => {
-        if (!formData.password || !formData.userName) {
+        if (!formData.password || !formData.mail) {
             setNoClick(true);
         } else {
             setNoClick(false);
@@ -70,7 +70,7 @@ export default function Login({ navigation }) {
                     break;
                 case 'Account not exist':
                     setFormError((pre) => {
-                        var newError = { ...pre, userName: true };
+                        var newError = { ...pre, mail: true };
                         return newError;
                     });
                     break;
@@ -144,8 +144,8 @@ export default function Login({ navigation }) {
                     />
                     <View style={styles.formSignUp}>
                         <FormTextInput
-                            lable="UserName"
-                            place="User Name"
+                            lable="Email"
+                            place="Your Email"
                             icon={
                                 <Feather
                                     name="user"
@@ -153,12 +153,12 @@ export default function Login({ navigation }) {
                                     color="#865DFF"
                                 />
                             }
-                            value={formData.userName}
-                            handleChange={(e) => handleChange(e, 'userName')}
+                            value={formData.mail}
+                            handleChange={(e) => handleChange(e, 'mail')}
                         />
-                        {formError.userName && (
+                        {formError.mail && (
                             <Text style={{ color: 'red' }}>
-                                UserName doesn't not exists
+                                Email doesn't not exists
                             </Text>
                         )}
                         <FormTextInput
